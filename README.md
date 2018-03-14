@@ -1,0 +1,2 @@
+# NameGenerationRBM
+Name generation project. 
