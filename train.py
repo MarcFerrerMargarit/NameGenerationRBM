@@ -97,7 +97,7 @@ if __name__ == '__main__':
     else:
         codec_kls = BinomialShortTextCodec if args.binomial else ShortTextCodec
         codec = codec_kls(args.extra_chars, args.max_text_length, 
-            args.min_text_length, args.preserve_case, args.left)
+            args.min_text_length, True, args.left)
         codec.debug_description()
         model_kwargs = {'codec': codec,
                         'n_components': args.n_hidden,
@@ -112,12 +112,12 @@ if __name__ == '__main__':
         rbm = kls(**model_kwargs)
 
     vecs = Utils.vectors_from_txtfile(args.input_fname, codec)
-    gridEncoder = GridEncoder()
-    data = gridEncoder.generate_data_fake()
-    vecs1 = gridEncoder.generate_one_hot_vector(data)
-    print(vecs1.shape)
-    print(vecs.shape)
-    train, validation = train_test_split(vecs1, test_size=args.test_ratio)
+    # gridEncoder = GridEncoder()
+    # data = gridEncoder.generate_data_fake()
+    # vecs1 = gridEncoder.generate_one_hot_vector(data)
+    # print(vecs1.shape)
+    # print(vecs.shape)
+    train, validation = train_test_split(vecs, test_size=args.test_ratio)
     print ("Training data shape : " + str(train.shape))
 
     rbm.fit(train, validation)
