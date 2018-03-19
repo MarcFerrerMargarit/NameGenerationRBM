@@ -1,7 +1,7 @@
 import argparse
 import pickle
 
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from GridEncoder import GridEncoder
 import Utils
 from ShortTextCodec import ShortTextCodec, BinomialShortTextCodec
