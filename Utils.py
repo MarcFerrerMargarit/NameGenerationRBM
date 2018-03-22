@@ -27,7 +27,7 @@ def timeit(f):
     return timed
 
 def vectors_from_txtfile(fname, codec, limit=-1, mutagen=None):
-    f = open(fname)
+    f = open(fname,encoding="utf8")
     skipped = Counter()
     vecs = []
     for line in f:
