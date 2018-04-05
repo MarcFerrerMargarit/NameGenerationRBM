@@ -16,7 +16,6 @@ import scipy.sparse as sp
 
 from sklearn.base import BaseEstimator
 from sklearn.base import TransformerMixin
-from sklearn.externals.six.moves import xrange
 from sklearn.utils import check_array
 from sklearn.utils import check_random_state
 from sklearn.utils import gen_even_slices
@@ -410,7 +409,7 @@ class BernoulliRBM(BaseEstimator, TransformerMixin):
                                             n_batches, n_samples))
         verbose = self.verbose
         begin = time.time()
-        for iteration in xrange(1, self.n_iter + 1):
+        for iteration in range(1, self.n_iter + 1):
             if self.lr_backoff:
                 # If, e.g., we're doing 10 epochs, use the full learning rate for
                 # the first iteration, 90% of the base learning rate for the second

@@ -110,7 +110,7 @@ if __name__ == '__main__':
                         }
         kls = CharBernoulliRBMSoftmax if args.softmax else CharBernoulliRBM
         rbm = kls(**model_kwargs)
-
+    print(model_kwargs)
     vecs = Utils.vectors_from_txtfile(args.input_fname, codec)
     # gridEncoder = GridEncoder()
     # data = gridEncoder.generate_data_fake()
@@ -119,7 +119,6 @@ if __name__ == '__main__':
     # print(vecs.shape)
     train, validation = train_test_split(vecs, test_size=args.test_ratio)
     print ("Training data shape : " + str(train.shape))
-
     rbm.fit(train, validation)
     out_fname = pickle_name(args, parser)
     f = open(out_fname, 'wb')
